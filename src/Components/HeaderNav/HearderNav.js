@@ -16,10 +16,13 @@ const HearderNav = () => {
         </Link>
         <Homebar>About </Homebar>
       </NavHolder>
-      <CartHolder>
-        <AiOutlineShoppingCart />
-        <CartNumber>0</CartNumber>
-      </CartHolder>
+      <Link style={{ textDecoration: "none", color: "black" }} to="/cartpage">
+
+        <CartHolder>
+          <AiOutlineShoppingCart />
+          <CartNumber>0</CartNumber>
+        </CartHolder>
+      </Link>
     </NavContainer>
   );
 };
