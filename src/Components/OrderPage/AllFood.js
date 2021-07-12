@@ -2,15 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import { Button } from "antd";
 import "antd/dist/antd.css";
-const AllFood = ({ pic, title }) => {
+import { connect } from "react-redux";
+import { addTocart } from "../AuthState/actionState";
+const AllFood = ({ q, watch }) => {
   return (
     <>
       <CartCardHolder>
         <CartCard>
-          <CartImage src={pic} />
+          <CartImage src={q.avatar} />
           <TitleHolder>
-            <TiltleCart>{title}</TiltleCart>
-            <CartPrice>#2,000</CartPrice>
+            <TiltleCart>{q.title}</TiltleCart>
+            <CartPrice>#{q.price}</CartPrice>
           </TitleHolder>
           <ButtomButtonHolder>
             <Button
@@ -23,6 +25,9 @@ const AllFood = ({ pic, title }) => {
               Details
             </Button>
             <Button
+              onClick={() => {
+                watch(q.id);
+              }}
               style={{
                 width: "150px",
                 margin: "5px",
@@ -40,7 +45,15 @@ const AllFood = ({ pic, title }) => {
   );
 };
 
-export default AllFood;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    watch: (id) => {
+      dispatch(addTocart(id));
+    },
+  };
+};
+
+export default connect(null, mapDispatchToProps)(AllFood);
 
 const ScrollHolder = styled.div`
   height: 100%;

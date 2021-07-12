@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import styled from "styled-components";
 import { FaFacebookSquare, FaInstagram, FaYoutube } from "react-icons/fa";
 import pic from "../../img/ud1.png";
+import { Link } from "react-router-dom";
 
 let date = new Date().getFullYear();
 console.log(date);
@@ -11,43 +12,33 @@ const Footer = () => {
     <Fragment>
       <Container>
         <Wrapper>
-          <span>About Us</span>
-
-          <Direct1>How it Work</Direct1>
-          <Direct2>Testimonia</Direct2>
-          <Direct3>Career</Direct3>
-          <Direct4>Investor</Direct4>
-          <Direct5>Terms of services</Direct5>
-        </Wrapper>
-        <Wrapper>
-          <span>Contact us</span>
-
-          <Direct1>How it Work</Direct1>
-          <Direct2>Testimonia</Direct2>
-          <Direct3>Career</Direct3>
-          <Direct4>Investor</Direct4>
-          <Direct5>Terms of services</Direct5>
-        </Wrapper>
-        <Wrapper>
-          <span>About Us </span>
-
-          <Direct1>How it Work</Direct1>
-          <Direct2>Testimonia</Direct2>
-          <Direct3>Career</Direct3>
-          <Direct4>Investor</Direct4>
-          <Direct5>Terms of services</Direct5>
-        </Wrapper>
-        <Wrapper>
-          <span>Social Media</span>
-
-          <Direct1>How it Work</Direct1>
-          <Direct2>Testimonia</Direct2>
-          <Direct3>Career</Direct3>
-          <Direct4>Investor</Direct4>
-          <Direct5>Terms of services</Direct5>
+          <ContentWrapper>
+            <ContentText1>About Us</ContentText1>
+            <ContentText2>
+              We strongly believe that our people approach is fundamental to
+              achieving our vision
+            </ContentText2>
+          </ContentWrapper>
+          <ContentWrapperm>
+            <ContentText1>Our Menu</ContentText1>
+            <Link style={{ textDecoration: "none", color: "white" }} to="/">
+              <ContentText2>Home</ContentText2>
+            </Link>
+            <Link
+              style={{ textDecoration: "none", color: "white" }}
+              to="/ordernow"
+            >
+              <ContentText2> Place Order</ContentText2>
+            </Link>
+          </ContentWrapperm>
+          <ContentWrapper>
+            <ContentText1>Contact Us</ContentText1>
+            <ContentText2>24, lekki road, Lagos</ContentText2>
+            <ContentText2>Email: UdemeKit@gmail.com</ContentText2>
+            <ContentText2>phone: +234 111 111 000</ContentText2>
+          </ContentWrapper>
         </Wrapper>
       </Container>
-
       <BottomTab>
         <Tab>
           <Logo src={pic} />
@@ -85,6 +76,57 @@ const Footer = () => {
 };
 
 export default Footer;
+
+const ContentWrapper = styled.div``;
+const ContentWrapperm = styled.div`
+  margin-left: 70px;
+
+  @media screen and (max-width: 600px) {
+    margin-left: 17px;
+  }
+`;
+const ContentText1 = styled.div`
+  font-weight: bold;
+`;
+const ContentText2 = styled.div`
+  font-weight: 300;
+
+  @media screen and (max-width: 600px) {
+    font-size: 10px;
+    width: ;
+  }
+`;
+
+const Container = styled.div`
+  /* height: 300px; */
+  width: 100%;
+  margin-top: 20px;
+
+  background: #004a1e;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Wrapper = styled.div`
+  display: grid;
+  margin: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 80%;
+  justify-content: center;
+  margin-left: 150px;
+  /* background-color: red; */
+  /* align-items: center; */
+  @media screen and (max-width: 600px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: 0;
+    width: 100%;
+    margin-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+  }
+`;
 
 const Tab = styled.div`
   width: 100%;
@@ -131,84 +173,4 @@ const Logo = styled.img`
   width: 150px;
   height: 40px;
   object-fit: contain;
-`;
-
-const Direct1 = styled.div`
-  margin-top: 20px;
-  text-align: left;
-  width: 10rem;
-  font-weight: normal;
-  &:hover {
-    cursor: pointer;
-    text-decoration: underline;
-  }
-`;
-const Direct2 = styled.div`
-  text-align: left;
-  width: 10rem;
-  margin-top: 10px;
-  font-weight: normal;
-  &:hover {
-    cursor: pointer;
-    text-decoration: underline;
-  }
-`;
-const Direct3 = styled.div`
-  text-align: left;
-  width: 10rem;
-  margin-top: 10px;
-  font-weight: normal;
-  &:hover {
-    cursor: pointer;
-    text-decoration: underline;
-  }
-`;
-const Direct4 = styled.div`
-  text-align: left;
-  width: 10rem;
-  margin-top: 10px;
-  font-weight: normal;
-  &:hover {
-    cursor: pointer;
-    text-decoration: underline;
-  }
-`;
-const Direct5 = styled.div`
-  text-align: left;
-  width: 10rem;
-  margin-top: 10px;
-  font-weight: normal;
-
-  &:hover {
-    cursor: pointer;
-    text-decoration: underline;
-  }
-`;
-
-const Container = styled.div`
-  background-color: #004a1e;
-  margin-top: 20px;
-  width: 100%;
-  /* height: 35vh; */
-  color: white;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-
-  @media screen and (max-width: 600px) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    padding-left: 20px;
-  }
-`;
-const Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  display: flex;
-  font-weight: bold;
-  flex-direction: column;
-
-  span {
-    margin-top: 20px;
-    text-transform: uppercase;
-  }
 `;

@@ -35,11 +35,12 @@ export default DeliveryImage;
 const BoxHolder = styled.div`
   width: 80%;
   /* background: red; */
-  display: flex;
+  /* display: flex; */
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   @media screen and (max-width: 600px) {
     width: 100%;
   }
@@ -49,6 +50,9 @@ const BoxHolding = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  @media screen and (max-width: 600px) {
+   font-size: 10px;
+
 `;
 const Content1 = styled.div`
   font-weight: bold;
@@ -58,6 +62,15 @@ const Content2 = styled.div`
   text-align: center;
   font-size: 10px;
   margin-top: 10px;
+
+  @media screen and (max-width: 600px) {
+   font-size: 10px;
+   text-align: center;
+   /* background: red; */
+   width : 85%;
+   margin-top: 5px
+ 
+
 `;
 
 const BoxSvg = styled.img`
@@ -73,7 +86,9 @@ const DeliverContainer = styled.div`
   align-items: center;
   margin-top: 50px;
 `;
-const HeaderText = styled.div``;
+const HeaderText = styled.div`
+  color: #004a1e;
+`;
 const HeaderText2 = styled.div`
   font-size: 30px;
   margin-top: 20px;

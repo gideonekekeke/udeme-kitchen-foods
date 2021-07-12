@@ -3,15 +3,17 @@ import styled from "styled-components";
 import { Button } from "antd";
 import "antd/dist/antd.css";
 import pic from "../../../img/f1.jpg";
-const MainCartCard = () => {
+import { addTocart } from "../../AuthState/actionState";
+import { connect, useDispatch } from "react-redux";
+const MainCartCard = ({ t, watch }) => {
   return (
     <>
       <CartCardHolder>
         <CartCard>
-          <CartImage src={pic} />
+          <CartImage src={t.avatar} />
           <TitleHolder>
-            <TiltleCart>Vegetable Soup</TiltleCart>
-            <CartPrice>#2,000</CartPrice>
+            <TiltleCart>{t.title}</TiltleCart>
+            <CartPrice>#{t.price}</CartPrice>
           </TitleHolder>
           <ButtomButtonHolder>
             <Button
@@ -24,6 +26,10 @@ const MainCartCard = () => {
               Details
             </Button>
             <Button
+              onClick={() => {
+                watch(t.id);
+                console.log(t.id);
+              }}
               style={{
                 width: "150px",
                 margin: "5px",
@@ -41,7 +47,15 @@ const MainCartCard = () => {
   );
 };
 
-export default MainCartCard;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    watch: (id) => {
+      dispatch(addTocart(id));
+    },
+  };
+};
+
+export default connect(null, mapDispatchToProps)(MainCartCard);
 
 const ScrollHolder = styled.div`
   height: 100%;
@@ -91,6 +105,7 @@ const CartCard = styled.div`
   border-radius: 5px;
   box-shadow: 0px 5px 7px -2px rgba(0, 0, 0, 0.35);
   flex-direction: column;
+
   &:hover {
     transition: all 350ms;
     transform: scaleX(1);
@@ -106,7 +121,7 @@ const CartCard = styled.div`
 
 const CartCardHolder = styled.div`
   display: flex;
-  flex: 1;
+  /* flex: 1; */
   flex-direction: column;
   /* width: 100%; */
   /* background-color: red; */

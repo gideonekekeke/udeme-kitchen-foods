@@ -1,0 +1,11 @@
+.inputClass {
+  width: 350px;
+  margin-left: 200px;
+  height: 40px;
+}
+
+@media screen and (max-width: 600px) {
+  .inputClass {
+    display: none;
+  }
+}

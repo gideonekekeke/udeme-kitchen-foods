@@ -82,6 +82,10 @@ const Info1 = styled.p`
       }
     }
   }
+
+  @media screen and (max-width: 600px) {
+    font-size: 17px;
+  }
 `;
 
 const ButtonContainer = styled.div`

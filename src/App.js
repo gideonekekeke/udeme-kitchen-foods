@@ -4,8 +4,8 @@ import Body from "./Components/Body/Body";
 import Footer from "./Components/Footer/Footer";
 import HearderNav from "./Components/HeaderNav/HearderNav";
 import OrderPage from "./Components/OrderPage/OrderPage";
-import CartPage from "./Components/CartPage.js/CartPage"
-
+import CartPage from "./Components/CartPage.js/CartPage";
+import "./App.css";
 function App() {
   return (
     <>
