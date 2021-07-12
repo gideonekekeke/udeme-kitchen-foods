@@ -167,10 +167,7 @@ font-family: poppins;
 
 
 const Container = styled.div`
- background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.19);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(90px);
+background-color: white;
 height: 200px;
 display: flex;
 flex-direction: column;
