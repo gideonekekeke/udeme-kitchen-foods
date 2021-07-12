@@ -14,7 +14,9 @@ const HearderNav = () => {
         <Link style={{ textDecoration: "none", color: "black" }} to="/ordernow">
           <Homebar>Order </Homebar>
         </Link>
-        <Homebar>About </Homebar>
+        <Link style={{ textDecoration: "none", color: "black" }} to="/about">
+          <Homebar>About </Homebar>
+        </Link>
       </NavHolder>
       <Link style={{ textDecoration: "none", color: "black" }} to="/cartpage">
 
