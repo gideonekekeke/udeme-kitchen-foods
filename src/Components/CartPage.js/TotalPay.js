@@ -1,7 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link, useHistory } from "react-router-dom";
 
 function TotalPay() {
+
+  const hist = useHistory();
   return (
     <AllContainer>
       <Container>
@@ -26,7 +29,14 @@ function TotalPay() {
         <EmptyCon2>
 
         </EmptyCon2>
-        <Continue>
+        <Continue
+          onClick={
+            () => {
+              hist.push("/ordernow")
+            }
+          }
+
+        >
           CONTINUE SHOPPING
         </Continue>
         <Proceed>
@@ -34,7 +44,7 @@ function TotalPay() {
         </Proceed>
 
       </Container2>
-    </AllContainer>
+    </AllContainer >
   )
 }
 

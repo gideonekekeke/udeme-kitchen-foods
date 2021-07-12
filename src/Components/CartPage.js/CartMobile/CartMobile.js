@@ -2,15 +2,21 @@ import React, { useState } from 'react'
 import styled from "styled-components"
 import pix from "../../../img/f1.jpg"
 import { Input } from 'antd'
+import { removeFromcart } from "../../AuthState/actionState"
+import { connect } from 'react-redux'
+import { Link, useHistory } from "react-router-dom";
 
-function CartMobile() {
+function CartMobile({ r, remove }) {
+  const [counter, setCounter] = useState(0);
+
+  const hist = useHistory();
 
   const [qty, setQty
   ] = useState(1)
   return (
     <Container>
       <ComImage>
-        <img src={pix} />
+        <img src={r.avatar} />
 
       </ComImage>
 
@@ -20,7 +26,7 @@ function CartMobile() {
 
         </Cname>
         <FoodName>
-          Eba and vegSoup
+          {r.title}
         </FoodName>
         <FoodDecs>
 
@@ -28,7 +34,7 @@ function CartMobile() {
         </FoodDecs>
         <PriceDetails>
           <Price>
-            #3000
+            {r.price}
           </Price>
           <Details>
             view more
@@ -45,7 +51,7 @@ function CartMobile() {
           <Input
             min="1"
             type="number"
-            value={qty}
+            value={r.qty}
             style={{
               height: "65px",
               width: "40px",
@@ -56,7 +62,14 @@ function CartMobile() {
           />
 
         </Com2>
-        <Cancel>
+        <Cancel
+          onClick={
+            () => {
+              remove(r.id)
+            }
+          }
+
+        >
           x
         </Cancel>
 
@@ -66,7 +79,18 @@ function CartMobile() {
   )
 }
 
-export default CartMobile
+
+const mapDis = (dispatch) => {
+
+  return {
+    remove: (id) => {
+      dispatch(removeFromcart(id))
+    }
+  }
+
+}
+
+export default connect(null, mapDis)(CartMobile)
 
 const Cancel = styled.div`
 height: 18px;
@@ -80,6 +104,7 @@ color: red;
 position: absolute;
 top: 0px;
 right: 0px;
+padding-bottom: 5px;
 `
 
 const Com2 = styled.div``
@@ -122,7 +147,7 @@ font-size: 13px;
 `
 
 const Details = styled.div`
-width: 100px;
+width: 85px;
 background-color: #004A1E;
 color: white;
 display: flex;
@@ -199,6 +224,7 @@ display: flex;
 const PriceDetails = styled.div`
 display: flex;
 justify-content: space-between;
+
 `
 
 const FoodDecs = styled.div``
@@ -523,13 +549,14 @@ border-radius: 10px;
 @media screen and (max-width:320px){
   display: flex;
 width: 310px;
-height:auto;
+height:120px;
 
 margin-top: 20px;
 box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.19);
 justify-content: space-between;
 padding: 5px;
 border-radius: 10px;
+
 }
 
 

@@ -1,18 +1,33 @@
 import React from 'react'
 import styled from "styled-components"
 import CartCard from './CartCard'
+import { connect, useDispatch, useSelector } from "react-redux"
 
 
-function AllCart() {
+function AllCart({ order }) {
   return (
     <Container>
-      <CartCard />
-      <CartCard />
+
+      {
+        order.map((item) => (
+          <CartCard key={item.id} r={item} />
+        ))
+      }
+
+
     </Container>
   )
 }
 
-export default AllCart
+const mapStateCartList = (state) => {
+
+  return {
+    order: state.Food.cart
+  }
+}
+
+
+export default connect(mapStateCartList)(AllCart)
 
 const Container = styled.div`
 display: flex;

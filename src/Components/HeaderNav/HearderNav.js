@@ -68,6 +68,8 @@ const CartHolder = styled.div`
 
 const CartNumber = styled.div`
   /* background-color: red; */
+  color: red;
+  font-weight: bold;
 `;
 
 const NavContainer = styled.div`

@@ -1,7 +1,31 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from "styled-components"
+import { Link, useHistory } from "react-router-dom";
+import { connect } from "react-redux"
 
-function Summary() {
+function Summary({ view }) {
+  const hist = useHistory();
+  const [counter, setCounter] = useState(0)
+  const [subTotal, setsubTotal] = useState(0)
+  const [delivery, setDeliver] = useState(1000)
+  const [total, setTotal] = useState(0)
+
+  useEffect(() => {
+    let newCount = 0
+    let newPrice = 0
+    let allTotal = 0
+
+    view.forEach(el => {
+      newCount += el.qty
+      newPrice += el.price * el.qty
+      allTotal += el.price * el.qty + 1000
+
+    })
+    setCounter(newCount)
+    setsubTotal(newPrice)
+    setTotal(allTotal)
+  }, [counter, view, setCounter])
+
   return (
     <Container>
       <SummaryCon>
@@ -12,7 +36,7 @@ function Summary() {
           Total Items
         </ItemsN>
         <ItemsN2>
-          4
+          {counter}
         </ItemsN2>
 
       </Item>
@@ -21,7 +45,7 @@ function Summary() {
           SubTotal
         </Subtotal1>
         <Subtotal2>
-          #3000
+          {subTotal}
         </Subtotal2>
 
       </Subtotal>
@@ -30,8 +54,8 @@ function Summary() {
           Delivery Fee
         </Delivery1>
         <Delivery2>
-          #1000
-          </Delivery2>
+          {delivery}
+        </Delivery2>
 
       </Delivery>
       <TotalPrice>
@@ -39,7 +63,7 @@ function Summary() {
           Total Price
         </TotalPrice1>
         <TotalPrice2>
-          #4000
+          {total}
         </TotalPrice2>
 
       </TotalPrice>
@@ -50,7 +74,14 @@ function Summary() {
 
       </Proceed>
       <Continue>
-        <Continue2>
+        <Continue2
+
+          onClick={
+            () => {
+              hist.push("/ordernow")
+            }
+          }
+        >
           Continue Order
         </Continue2>
 
@@ -60,7 +91,13 @@ function Summary() {
   )
 }
 
-export default Summary
+const mapState = (state) => {
+  return {
+    view: state.Food.cart,
+  }
+}
+
+export default connect(mapState)(Summary)
 
 const Continue2 = styled.div`
 width: 300px;
@@ -108,6 +145,7 @@ const Continue = styled.div`
 padding-left: 10px;
 justify-content: center;
 display: flex;
+margin-top: -3px;
 `
 
 const Proceed = styled.div`

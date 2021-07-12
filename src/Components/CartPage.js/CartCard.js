@@ -1,14 +1,39 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import styled from "styled-components"
 import pix from "../../img/f1.jpg"
 import { MdDeleteSweep } from 'react-icons/md';
+import { connect } from 'react-redux'
+import { Input } from 'antd'
+import {removeFromcart, adjustQty} from "../AuthState/actionState"
+import { Link, useHistory } from "react-router-dom";
 
-function CartCard() {
+function CartCard({r, remove, view,chng}) {
+  const hist = useHistory();
+  const [counter, setCounter] = useState(0)
+  const [subTotal, setsubTotal] = useState(0)
+  const [myQTY, setMyQTY] = useState(r.qty)
+
+  // useEffect(() => {
+  //   let newCount = 0
+  //   let newPrice = 0
+    
+
+  //   view.forEach(el => {
+  //     newCount += el.qty
+  //     newPrice += el.price * el.qty
+     
+
+  //   })
+  //   setCounter(newCount)
+  //   setsubTotal(newPrice)
+   
+  // }, [counter, view, setCounter])
+  
   return (
     <CardAll>
       <DetailsCon>
         <FoodImg>
-          <img src={pix} />
+          <img src={r.avatar} />
 
         </FoodImg>
         <FoodDetails>
@@ -18,14 +43,20 @@ function CartCard() {
           </Tseller>
           <Tides>
             <Ttitle>
-              Eba And VegSoup
+              {r.title}
           </Ttitle>
             <Tdes>
               prepare from the best kitchen  prepare from the best kitchen
            
               </Tdes>
           </Tides>
-          <Tremove>
+          <Tremove
+            onClick={
+              () => {
+                remove(r.id)
+              }
+            }
+          >
             <MdDeleteSweep
               style={{
                 color: "#004A1E",
@@ -39,14 +70,30 @@ function CartCard() {
 
       </DetailsCon>
       <QtyCon>
-            2
+      <Input
+            min="1"
+            type="number"
+            value={r.qty}
+            style={{
+              height: "65px",
+              width: "60px",
+              border: "1px solid #004A1E"
+
+            }}
+
+            onChange={(e) => {
+              setMyQTY(e.target.value)
+              chng(r.id, e.target.value)
+            }}
+
+          />
       </QtyCon>
       <PriceCon>
-           #300
+           {r.price}
 
       </PriceCon>
       <SubCon>
-         #6000
+        {subTotal}
       </SubCon>
 
 
@@ -54,7 +101,29 @@ function CartCard() {
   )
 }
 
-export default CartCard
+const mapDis = (dispatch) =>{
+
+  return{
+    remove:(id)=>{
+  dispatch(removeFromcart(id))
+    },
+    chng: (id, value) => {
+      dispatch(adjustQty(id, value))
+    },
+   
+   
+  }
+
+}
+
+// const mapState = (state) => {
+//   return {
+//     view: state.Food.cart,
+//   }
+// }
+
+
+export default connect (null, mapDis) (CartCard)
 
 const Tides = styled.div`
 
@@ -68,7 +137,10 @@ margin-top: -10px;
 
 const Tremove = styled.div`
 display: flex;
-margin-top: 15px;
+margin-top: 25px;
+
+margin-left: -2px;
+cursor: pointer;
 
 `
 const Tdes = styled.div`

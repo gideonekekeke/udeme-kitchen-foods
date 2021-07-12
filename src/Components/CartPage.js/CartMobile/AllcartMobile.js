@@ -2,17 +2,22 @@ import React from 'react'
 import styled from 'styled-components'
 import CartMobile from './CartMobile'
 import Summary from './Summary'
+import { connect, useDispatch, useSelector } from "react-redux"
 
 
-function AllcartMobile() {
+function AllcartMobile({ order }) {
   return (
     <Container>
       <Container1>
-        <CartMobile />
-        <CartMobile />
-        <CartMobile />
-        <CartMobile />
-        <CartMobile />
+
+        {
+          order.map((item) => (
+
+            <CartMobile key={item.id} r={item} />
+          ))
+        }
+
+
       </Container1>
       <Container2>
         <Summary />
@@ -26,7 +31,14 @@ function AllcartMobile() {
   )
 }
 
-export default AllcartMobile
+const mapStateCartList = (state) => {
+
+  return {
+    order: state.Food.cart
+  }
+}
+
+export default connect(mapStateCartList)(AllcartMobile)
 
 const Container1 = styled.div`
 display: flex;
@@ -34,7 +46,7 @@ flex-wrap: wrap;
 justify-content: center;
 
 overflow-x: scroll;
-height: 400px;
+height: 300px;
 `
 
 const Container2 = styled.div`
