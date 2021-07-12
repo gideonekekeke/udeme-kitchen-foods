@@ -27,7 +27,7 @@ function TotalPay() {
 
         </EmptyCon2>
         <Continue>
-          CONTINUE ODERING
+          CONTINUE SHOPPING
         </Continue>
         <Proceed>
           PROCEED TO PAYMENT

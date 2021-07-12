@@ -4,8 +4,12 @@ import Body from "./Components/Body/Body";
 import Footer from "./Components/Footer/Footer";
 import HearderNav from "./Components/HeaderNav/HearderNav";
 import OrderPage from "./Components/OrderPage/OrderPage";
+
 import CartPage from "./Components/CartPage.js/CartPage";
 import "./App.css";
+
+import About from "./Components/AboutPage/About";
+
 function App() {
   return (
     <>
@@ -15,6 +19,7 @@ function App() {
           <Route exact path="/" component={Body} />
           <Route path="/ordernow" component={OrderPage} />
           <Route exact path="/cartpage" component={CartPage} />
+          <Route exact path="/about" component={About} />
         </Switch>
         <Footer />
       </Router>

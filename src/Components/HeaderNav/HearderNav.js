@@ -30,12 +30,10 @@ const HearderNav = ({ view }) => {
         <Link style={{ textDecoration: "none", color: "black" }} to="/ordernow">
           <Homebar>Order </Homebar>
         </Link>
-        <Homebar>About </Homebar>
-        <Input
-          className="inputClass"
-          placeholder="Search"
-          suffix={<AiOutlineSearch />}
-        />
+
+        <Link style={{ textDecoration: "none", color: "black" }} to="/about">
+          <Homebar>About </Homebar>
+        </Link>
       </NavHolder>
 
       <Link style={{ textDecoration: "none", color: "black" }} to="/cartpage">

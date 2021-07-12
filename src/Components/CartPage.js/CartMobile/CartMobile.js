@@ -367,89 +367,98 @@ flex-direction: column;
 const ComImage = styled.div`
 
 width: 85px;
-background-color: yellow;
+
 height: 85px;
-border-radius: 85px;
+
 
 img{
   width: 85px;
 object-fit: cover;
 height: 85px;
-border-radius: 85px;
+
 }
 
 @media screen and (max-width:768px){
 width: 120px;
-background-color: yellow;
+
 height: 120px;
-border-radius: 120px;
+border-radius:10px ;
+
 
 
 img{
   width: 120px;
 object-fit: cover;
 height: 120px;
-border-radius: 120px;
+border-radius:10px ;
+
 }
 }
 @media screen and (max-width:500px){
 width: 110px;
-background-color: yellow;
+
 height: 110px;
-border-radius: 110px;
+border-radius:10px ;
+
 
 
 img{
   width: 110px;
 object-fit: cover;
 height: 110px;
-border-radius: 110px;
+border-radius:10px ;
+
 }
 }
 
 
 @media screen and (max-width:425px){
   width: 100px;
-background-color: yellow;
+
 height: 100px;
-border-radius: 100px;
+border-radius:10px ;
+
 
 
 img{
   width: 100px;
 object-fit: cover;
 height: 100px;
-border-radius: 100px;
+border-radius:10px ;
+
 }
 }
 
 @media screen and (max-width:375px){
   width: 90px;
-background-color: yellow;
+
 height: 90px;
-border-radius: 90px;
+border-radius:10px ;
+
 
 
 img{
   width: 90px;
 object-fit: cover;
 height: 90px;
-border-radius: 90px;
+border-radius:10px ;
+
 }
 }
 
 @media screen and (max-width:320px){
-  width: 85px;
-background-color: yellow;
+width: 85px;
 height: 85px;
-border-radius: 85px;
+border-radius:10px ;
+
 
 
 img{
-  width: 85px;
+width: 85px;
 object-fit: cover;
 height: 85px;
-border-radius: 85px;
+border-radius:10px ;
+
 }
 
 }
