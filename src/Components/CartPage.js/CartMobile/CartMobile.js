@@ -54,7 +54,7 @@ function CartMobile({ r, remove }) {
             value={r.qty}
             style={{
               height: "65px",
-              width: "40px",
+              width: "55px",
               border: "1px solid #004A1E"
 
             }}
@@ -107,7 +107,10 @@ right: 0px;
 padding-bottom: 5px;
 `
 
-const Com2 = styled.div``
+const Com2 = styled.div`
+width: 90px;
+
+`
 
 const Com1 = styled.div`
 color: #004A1E;

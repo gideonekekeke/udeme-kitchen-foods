@@ -1,8 +1,23 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Link, useHistory } from "react-router-dom";
+import { connect } from "react-redux"
 
-function TotalPay() {
+function TotalPay({ view }) {
+
+  const [total, setTotal] = useState(0)
+
+
+  useEffect(() => {
+    let newp = 0
+
+    view.forEach(el => {
+      newp += el.price * el.qty + 1000
+    })
+
+    setTotal(newp)
+
+  })
 
   const hist = useHistory();
   return (
@@ -17,7 +32,7 @@ function TotalPay() {
 
         <TotalCon>
 
-          #6000
+          {total}
           <p>Dilevery fee is 1000</p>
         </TotalCon>
 
@@ -48,7 +63,13 @@ function TotalPay() {
   )
 }
 
-export default TotalPay
+const mapState = (state) => {
+  return {
+    view: state.Food.cart,
+  }
+}
+
+export default connect(mapState)(TotalPay)
 
 const EmptyCon2 = styled.div`
 width: 400px;

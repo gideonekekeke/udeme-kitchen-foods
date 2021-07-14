@@ -10,24 +10,15 @@ import { Link, useHistory } from "react-router-dom";
 function CartCard({r, remove, view,chng}) {
   const hist = useHistory();
   const [counter, setCounter] = useState(0)
-  const [subTotal, setsubTotal] = useState(0)
+  const [subTotal, setsubTotal] = useState(r.qty * r.price)
   const [myQTY, setMyQTY] = useState(r.qty)
 
-  // useEffect(() => {
-  //   let newCount = 0
-  //   let newPrice = 0
+  useEffect(() => {
     
-
-  //   view.forEach(el => {
-  //     newCount += el.qty
-  //     newPrice += el.price * el.qty
-     
-
-  //   })
-  //   setCounter(newCount)
-  //   setsubTotal(newPrice)
+  
    
-  // }, [counter, view, setCounter])
+   
+  }, [counter, view, setCounter, subTotal, setsubTotal])
   
   return (
     <CardAll>
@@ -93,7 +84,7 @@ function CartCard({r, remove, view,chng}) {
 
       </PriceCon>
       <SubCon>
-        {subTotal}
+        {r.qty * r.price }
       </SubCon>
 
 
