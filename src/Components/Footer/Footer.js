@@ -42,9 +42,7 @@ const Footer = () => {
       <BottomTab>
         <Tab>
           <Logo src={pic} />
-          <span>
-            Developed by CodeLab 🚀 | © {date} All rights reserved 👽{" "}
-          </span>
+          <span>Developed by CodeLab 🚀 | © {date} All rights reserved </span>
           <SocialLinks>
             <a
               href="https://www.facebook.com/groups/brighterdayscodelab/"

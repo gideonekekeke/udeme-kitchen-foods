@@ -39,4 +39,5 @@
 
 body {
   font-family: Poppins;
+  z-index: -1;
 }

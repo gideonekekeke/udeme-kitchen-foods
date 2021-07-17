@@ -118,10 +118,12 @@ const CartCard = styled.div`
 
 const CartCardHolder = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center; /* width: 100%; */ /* background-color: red; */
-  /* flex-wrap: wrap; */
+  height: 100vh;
+  /* justify-content: center; */
+  /* align-items: center; */
+  flex-wrap: wrap;
   @media screen and (max-width: 600px) {
+    height: 100%;
     /* width: 1000px; */
 
     /* background-color: red; */

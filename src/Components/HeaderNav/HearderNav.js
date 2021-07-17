@@ -86,7 +86,7 @@ const NavContainer = styled.div`
   top: 0;
   width : 100%
 
-  z-index: 100;
+  z-index: 1090;
   @media screen and (max-width: 960px) {
     Input {
       display: none;

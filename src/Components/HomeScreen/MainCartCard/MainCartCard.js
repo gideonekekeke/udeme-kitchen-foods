@@ -1,10 +1,12 @@
-import React from "react";
+import React, { usEffect } from "react";
 import styled from "styled-components";
 import { Button } from "antd";
 import "antd/dist/antd.css";
 import pic from "../../../img/f1.jpg";
 import { addTocart } from "../../AuthState/actionState";
-import { connect, useDispatch } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
+// import storage from "local-storage-fallback";
+
 const MainCartCard = ({ t, watch }) => {
   return (
     <>

@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font-family: poppins;
+  z-index: -10;
 }
 
 code {
